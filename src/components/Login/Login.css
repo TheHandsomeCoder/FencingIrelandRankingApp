@@ -1,0 +1,34 @@
+.login{
+    display:flex;
+    flex-grow: 1;
+}
+
+.login__title{
+    background: #38435a;
+    flex: 0 0 25%;
+    max-width: 25%;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    padding: 96px 24px 24px 24px;
+}
+
+.login__title h1{
+    text-align: center;
+    font-size: 2.4rem;
+}
+
+.login__form-wrapper{
+    flex: 0 0 75%;
+    max-width: 75%;
+    display: flex;
+    flex-direction: column;
+    background-color: #eee;
+    padding: 96px 24px 24px 24px;
+    align-items: center;
+}
+
+.login__form{
+   max-width: 50%;
+   width:100%;
+}

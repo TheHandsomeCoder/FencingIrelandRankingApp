@@ -1,0 +1,12 @@
+html,
+body,
+.full-screen,
+div#main,
+div[data-reactroot] {
+	height: 100%;
+}
+
+body {
+	margin: 0;
+}
+
