@@ -21,17 +21,17 @@ class Login extends React.Component {
         <div className="login__title">
           <h1>Alternative Hockey League</h1>
         </div>
-       <div className="login__form-wrapper">
-         <div className="login__form">
-           <Card
-             className='white center-align'
-             title='Plese login to see your team'
-             actions={[
-               <a className="waves-effect waves-light btn-large social google"> <i className="fa fa-google"></i> Sign in with google</a>
-             ]}>
-           </Card>
-         </div>
-       </div>
+        <div className="login__form-wrapper">
+          <div className="login__form">
+            <Card
+              className='white center-align'
+              title='Plese login to see your team'
+              actions={[
+                <a className="waves-effect waves-light btn-large social google"> <i className="fa fa-google"></i> Sign in with google</a>
+              ]}>
+            </Card>
+          </div>
+        </div>
       </div>
     )
   }
