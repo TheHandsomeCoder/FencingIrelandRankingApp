@@ -5,12 +5,7 @@
 
 .login__title{
     background: #38435a;
-    flex: 0 0 25%;
-    max-width: 25%;
-    display: flex;
-    flex-direction: column;
     color: white;
-    padding: 96px 24px 24px 24px;
 }
 
 .login__title h1{
@@ -19,16 +14,53 @@
 }
 
 .login__form-wrapper{
-    flex: 0 0 75%;
-    max-width: 75%;
     display: flex;
     flex-direction: column;
     background-color: #eee;
-    padding: 96px 24px 24px 24px;
     align-items: center;
 }
 
 .login__form{
    max-width: 600px;
    width:100%;
+}
+
+/* tablet, landscape iPad, lo-res laptops ands desktops */
+@media (max-width:768px)  {
+    .login{
+        flex-direction: column;
+    }
+
+    .login__title{
+        max-width: 100%;
+        padding: 0px;
+        flex-basis: auto;
+    }
+
+    .login__form-wrapper{
+        width: 100%;
+        flex-basis: 100%;
+        min-width: 100%;
+    }
+}
+
+/* tablet, landscape iPad, lo-res laptops ands desktops */
+@media (min-width: 768px) and (max-width:1600px)  {
+    .login{
+        flex-direction: row;
+    }
+
+    .login__title{
+        padding: 96px 24px 24px 24px;
+        flex: 0 0 25%;
+        max-width: 25%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .login__form-wrapper{
+        flex: 0 0 75%;
+        max-width: 75%;
+        padding: 96px 24px 24px 24px;
+    }
 }

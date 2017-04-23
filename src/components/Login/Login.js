@@ -25,7 +25,7 @@ class Login extends React.Component {
           <div className="login__form">
             <Card
               className='white center-align'
-              title='Plese login to see your team'
+              title='Please login to see your team'
               actions={[
                 <a className="waves-effect waves-light btn-large social google"> <i className="fa fa-google"></i> Sign in with google</a>
               ]}>
