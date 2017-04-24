@@ -71,7 +71,6 @@ class Inventory extends React.Component {
         owner: data.owner || authData.user.uid
       });
     });
-
   }
 
   renderLogin() {
