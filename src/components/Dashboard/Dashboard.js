@@ -1,5 +1,5 @@
 import React from 'react';
-import './Login.css';
+import './Dashboard.css';
 import { Card } from 'react-materialize';
 import base from '../../base';
 
@@ -55,7 +55,8 @@ class Login extends React.Component {
         usersRef.child(authData.user.uid).set({
           provider: authData.credential.provider,
           email: authData.user.email,
-          name: authData.user.displayName
+          name: authData.user.displayName,
+          groups: {}
         })
       }
 
@@ -76,12 +77,8 @@ class Login extends React.Component {
           className='white center-align'
           title='Please login to see your team'
           actions={[
-           <div>
-              <a className="waves-effect waves-light btn-large social google"
-               onClick={() => this.authenticate('google')}> <i className="fa fa-google"></i> Sign in with google</a>
-               <a className="waves-effect waves-light btn-large"
-               onClick={() => this.logout()}> <i className="fa fa-exit"></i> Logout</a>
-           </div>
+            <a className="waves-effect waves-light btn-large social google"
+              onClick={() => this.authenticate('google')}> <i className="fa fa-google"></i> Sign in with google</a>
           ]}>
         </Card>
       )
@@ -95,6 +92,12 @@ class Login extends React.Component {
             <a className="waves-effect waves-light btn-large"
               onClick={() => this.logout()}> <i className="fa fa-exit"></i> Logout</a>
           ]}>
+          Your groups are:
+          <ul>
+             {Object.keys(this.state.user.groups).map( group =>
+                 <li key={group}>{group}</li>
+             )}
+          </ul>
         </Card>
       )
     }
@@ -104,7 +107,7 @@ class Login extends React.Component {
     return (
       <div className="login full-screen">
         <div className="login__title">
-          <h1>Fencing Ireland Rankings App</h1>
+          <h1>FI Rankings App</h1>
         </div>
         <div className="login__form-wrapper">
           <div className="login__form">

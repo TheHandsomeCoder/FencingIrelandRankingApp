@@ -1,12 +1,12 @@
 import Rebase from 're-base';
 
 const base = Rebase.createClass({
-   apiKey: "AIzaSyDV4UEVkuI3Og7nBIZ-TRL_yq6v7zwnM60",
-   authDomain: "alternativehockeyleague.firebaseapp.com",
-   databaseURL: "https://alternativehockeyleague.firebaseio.com",
-   projectId: "alternativehockeyleague",
-   storageBucket: "alternativehockeyleague.appspot.com",
-   messagingSenderId: "500298489538"
+    apiKey: "AIzaSyCOePo6Q1jp8CGfAnFxFaRzul1Q2tCe_uM",
+    authDomain: "fencing-ireland-rankings-app.firebaseapp.com",
+    databaseURL: "https://fencing-ireland-rankings-app.firebaseio.com",
+    projectId: "fencing-ireland-rankings-app",
+    storageBucket: "fencing-ireland-rankings-app.appspot.com",
+    messagingSenderId: "584306769149"
 });
 
 export default base;
