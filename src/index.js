@@ -6,22 +6,27 @@ import 'font-awesome/css/font-awesome.css'
 
 import React from 'react';
 import { render } from 'react-dom';
-import { BrowserRouter, Match, Miss } from 'react-router';
+import { BrowserRouter, Route, Switch} from 'react-router-dom';
 
 import './css/style.css';
 import Login from './components/Login/Login'
 import Navbar from './components/Navbar/Navbar'
-import NotFound from './components/NotFound';
+import NotFound from './components/NotFound'
 
 const Root = () => {
   return (
-    <BrowserRouter>
-      <div>
-        <Match exactly pattern="/login" component={Login} />
-        <Match exactly pattern="/" component={Navbar} />
-        <Miss component={NotFound} />
-      </div>
-    </BrowserRouter>
+
+
+      <BrowserRouter>
+        <div>
+          <Switch>
+            <Route path='/login' component={Login} />
+            <Route path='/' component={Navbar} />
+            <Route component={NotFound} />
+          </Switch>
+        </div>
+      </BrowserRouter>
+
   )
 }
 
