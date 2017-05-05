@@ -6,7 +6,7 @@
     "autoprefixer-stylus": "0.10.0",
     "concurrently": "3.0.0",
     "react-scripts": "0.6.0",
-    "stylus": "^0.54.5"
+    "eslint": "^3.19.0"
   },
   "dependencies": {
     "font-awesome": "^4.7.0",

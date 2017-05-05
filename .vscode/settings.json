@@ -5,5 +5,6 @@
         "xml": {
             "attr_quotes": "single"
         }
-    }
+    },
+    "eslint.enable": true
 }
