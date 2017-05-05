@@ -1,32 +1,43 @@
 import React from 'react';
 import './Login.css';
-import { Card } from 'react-materialize';
+import { Redirect } from 'react-router-dom';
+import { Card, Preloader } from 'react-materialize';
 import base from '../../base';
 
 class Login extends React.Component {
+
+
 
   constructor() {
     super();
     this.authenticate = this.authenticate.bind(this);
     this.logout = this.logout.bind(this);
     this.authHandler = this.authHandler.bind(this);
+    this.renderCardContents = this.renderCardContents.bind(this);
 
     this.state = {
-      uid: null,
-      owner: null,
-      user:{
-        groups: {}
-      }
+      authed: false,
+      loading: true,
+      uid: null
     }
   }
 
-  componentDidMount() {
-    base.onAuth((user) => {
-      if (user) {
-        this.authHandler(null, { user });
-      }
-    });
+  componentWillUnmount() {
+    this.removeListener()
   }
+
+  componentDidMount() {
+    this.removeListener = base.onAuth((user) => {
+      if (user) {
+        this.setState({ authed: true, loading: false });
+      }
+      else {
+        this.setState({ authed: false, loading: false });
+      }
+    })
+  }
+
+
 
   authenticate(provider) {
     console.log(`Trying to log in with ${provider}`);
@@ -67,40 +78,27 @@ class Login extends React.Component {
     });
   }
 
-  render() {
-    let card;
+  renderCardContents() {
 
-    if (!this.state.uid) {
-      card = (
-        <Card
-          className='white center-align'
-          title='Please login to see your team'
-          actions={[
-           <div>
-              <a className="waves-effect waves-light btn-large social google"
-               onClick={() => this.authenticate('google')}> <i className="fa fa-google"></i> Sign in with google</a>
-               <a className="waves-effect waves-light btn-large"
-               onClick={() => this.logout()}> <i className="fa fa-exit"></i> Logout</a>
-           </div>
-          ]}>
-        </Card>
-      )
+    if (this.state.loading) {
+      return (<Preloader size='small' />)
     }
     else {
-      card = (
-        <Card
-          className='white center-align'
-          title={`Welcome to AHL ${this.state.user.name}`}
-          actions={[
-            <a className="waves-effect waves-light btn-large"
-              onClick={() => this.logout()}> <i className="fa fa-exit"></i> Logout</a>
-          ]}>
-        </Card>
-      )
+      return (
+        <a className="waves-effect waves-light btn-large social google"
+          onClick={() => this.authenticate('google')}> <i className="fa fa-google"></i> Sign in with google</a>
+      );
     }
 
 
-    // Any where else
+  }
+
+  render() {
+
+    if (this.state.authed) {
+      return (<Redirect to="/"/>)
+    }
+
     return (
       <div className="login full-screen">
         <div className="login__title">
@@ -108,7 +106,13 @@ class Login extends React.Component {
         </div>
         <div className="login__form-wrapper">
           <div className="login__form">
-            {card}
+            <Card
+              className='white center-align'
+              title='Please login to see your team'
+              actions={[
+                this.renderCardContents()
+              ]}>
+            </Card>
           </div>
         </div>
       </div>
