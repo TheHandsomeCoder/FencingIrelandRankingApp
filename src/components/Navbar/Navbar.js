@@ -2,8 +2,14 @@ import React from 'react';
 import './Navbar.css';
 // import base from '../../base';
 import {Button, Dropdown, NavItem} from 'react-materialize'
+import base from '../../base'
 
 class Navbar extends React.Component {
+
+  logout() {
+    base.unauth();
+  }
+
   render() {
     return (
       <header>
@@ -19,16 +25,13 @@ class Navbar extends React.Component {
                   <li>
                     <Dropdown
                       trigger={
-                        <a data-belowOrigin="true">
+                        <a data-belowOrigin="true" data-constrainwidth="false" data-alignment="right">
                           <img src="http://materializecss.com/images/yuna.jpg" className="responsive-img circle profile-img" />
                         </a>
                       }
 
-                      >
-                      <NavItem>one</NavItem>
-                      <NavItem>two</NavItem>
-                      <NavItem divider />
-                      <NavItem>three</NavItem>
+>
+                      <NavItem><Button onClick={() => this.logout()}>Logout</Button></NavItem>
                     </Dropdown>
                   </li>
                 </ul>
