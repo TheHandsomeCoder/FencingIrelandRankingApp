@@ -1,13 +1,24 @@
 import React from 'react';
 import './Navbar.css';
 // import base from '../../base';
-import {Button, Dropdown, NavItem} from 'react-materialize'
+import { Button, Dropdown, NavItem } from 'react-materialize'
 import base from '../../base'
 
 class Navbar extends React.Component {
 
-  componentDidMount(){
-    const user = base.auth().currentUser;
+  constructor() {
+    super()
+    this.state = {user: {}}
+  }
+
+  componentDidMount() {
+    this.removeListener = base.onAuth((user) => {
+      if (user) {
+        this.setState({
+          user
+        });
+      }
+    });
   }
 
   logout() {
@@ -27,7 +38,7 @@ class Navbar extends React.Component {
                     <Dropdown
                       trigger={
                         <a data-belowOrigin="true" data-constrainwidth="false" data-alignment="right">
-                          <img alt="profile" src="http://materializecss.com/images/yuna.jpg" className="responsive-img circle profile-img" />
+                          <img alt="profile" src={this.state.user.photoURL} className="responsive-img circle profile-img" />
                         </a>
                       }>
                       <NavItem><Button onClick={() => this.logout()}>Logout</Button></NavItem>

@@ -54,7 +54,7 @@ class Root extends React.Component {
           loading: false
         })
       }
-    })
+    });
   }
   componentWillUnmount () {
     this.removeListener()
