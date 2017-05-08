@@ -26,7 +26,7 @@
 }
 
 /* tablet, landscape iPad, lo-res laptops ands desktops */
-@media (max-width:768px)  {
+@media (max-width:1024px)  {
     .login{
         flex-direction: column;
     }
@@ -45,7 +45,7 @@
 }
 
 /* tablet, landscape iPad, lo-res laptops ands desktops */
-@media (min-width: 768px) and (max-width:1600px)  {
+@media (min-width: 1024px){
     .login{
         flex-direction: row;
     }
