@@ -1,17 +1,14 @@
 import React from 'react';
 import './Login.css';
 import { Redirect } from 'react-router-dom';
-import { Card, Preloader } from 'react-materialize';
+import { Preloader } from 'react-materialize';
 import base from '../../base';
 
 class Login extends React.Component {
 
-
-
   constructor() {
     super();
     this.authenticate = this.authenticate.bind(this);
-    this.logout = this.logout.bind(this);
     this.authHandler = this.authHandler.bind(this);
     this.renderCardContents = this.renderCardContents.bind(this);
 
@@ -44,10 +41,7 @@ class Login extends React.Component {
     base.authWithOAuthPopup(provider, this.authHandler);
   }
 
-  logout() {
-    base.unauth();
-    this.setState({ uid: null });
-  }
+
 
   authHandler(err, authData) {
     if (err) {
@@ -84,10 +78,12 @@ class Login extends React.Component {
       return (<Preloader size='small' />)
     }
     else {
-      return (
-        <a className="waves-effect waves-light btn-large social google"
-          onClick={() => this.authenticate('google')}> <i className="fa fa-google"></i> Sign in with google</a>
-      );
+    return (
+      <a className="waves-effect waves-light btn-large social google"
+        onClick={() => this.authenticate('google')}>
+        <i className="fa fa-google"></i> Sign in with google
+      </a>
+    );
     }
 
 
@@ -106,13 +102,14 @@ class Login extends React.Component {
         </div>
         <div className="login__form-wrapper">
           <div className="login__form">
-            <Card
-              className='white center-align'
-              title='Please login to see your team'
-              actions={[
-                this.renderCardContents()
-              ]}>
-            </Card>
+            <div className="white center-align card">
+              <div className="card-content">
+                <span className="card-title grey-text text-darken-4">Please login to see your team</span>
+              </div>
+              <div className="card-action">
+                {this.renderCardContents()}
+              </div>
+            </div>
           </div>
         </div>
       </div>

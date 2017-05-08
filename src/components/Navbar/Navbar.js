@@ -26,11 +26,9 @@ class Navbar extends React.Component {
                     <Dropdown
                       trigger={
                         <a data-belowOrigin="true" data-constrainwidth="false" data-alignment="right">
-                          <img src="http://materializecss.com/images/yuna.jpg" className="responsive-img circle profile-img" />
+                          <img alt="profile" src="http://materializecss.com/images/yuna.jpg" className="responsive-img circle profile-img" />
                         </a>
-                      }
-
->
+                      }>
                       <NavItem><Button onClick={() => this.logout()}>Logout</Button></NavItem>
                     </Dropdown>
                   </li>
