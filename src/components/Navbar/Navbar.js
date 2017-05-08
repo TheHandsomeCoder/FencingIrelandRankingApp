@@ -6,6 +6,10 @@ import base from '../../base'
 
 class Navbar extends React.Component {
 
+  componentDidMount(){
+    const user = base.auth().currentUser;
+  }
+
   logout() {
     base.unauth();
   }
@@ -19,9 +23,6 @@ class Navbar extends React.Component {
               <div className="col s12">
                 <a href="#" className="brand-logo">Rankings App</a>
                 <ul id="nav-mobile" className="right hide-on-med-and-down">
-                  <li>
-
-                  </li>
                   <li>
                     <Dropdown
                       trigger={
