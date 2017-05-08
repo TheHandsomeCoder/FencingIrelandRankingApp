@@ -21,15 +21,15 @@ class Login extends React.Component {
       return;
     }
 
-    // grab the store info
-    const usersRef = base.database().ref('users');
+    //Check the users list for the existing userID
+    const usersRef = base.database().ref('users').child(authData.user.uid);
 
     // query the firebase once for the user
-    usersRef.once('value', (snapshot) => {
-      const users = snapshot.val() || {};
+    usersRef.once('value', (aUser) => {
+      const user = aUser.val();
 
-      if (!users[authData.user.uid]) {
-        usersRef.child(authData.user.uid).set({
+      if (!user) {
+        usersRef.set({
           provider: authData.credential.provider,
           email: authData.user.email,
           name: authData.user.displayName
